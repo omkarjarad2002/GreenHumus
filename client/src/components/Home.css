@@ -1,0 +1,85 @@
+.homeContainer {
+  height: 500px;
+  width: 100%;
+}
+.homeContainer img {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  /* opacity: 0.7; */
+}
+
+#services {
+  height: auto;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.servicesContainer {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.servicesContainer .box {
+  height: 400px;
+  width: 700px;
+  margin: 1rem;
+}
+
+#about {
+  height: 300px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.knowMore {
+  margin-top: 3rem;
+}
+
+.form {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.queryInput {
+  min-height: 50px;
+  max-height: 150px;
+  width: 500px;
+  border: 1px solid grey;
+}
+.submitQueryBtn {
+  height: 45px;
+  background-color: rgb(14, 221, 14);
+  width: 500px;
+  border: 2px solid rgb(14, 221, 14);
+  color: #ffffff;
+}
+.submitQueryBtn:hover {
+  height: 45px;
+  background-color: rgb(33, 250, 33);
+  width: 500px;
+  border: 2px solid rgb(33, 250, 33);
+  color: #000000;
+  transition: 250ms;
+}
+.send_icon {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.upwarddirectonarrow {
+  height: 30px;
+  width: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 6px;
+  float: right;
+  margin: auto 1rem 1rem auto;
+}

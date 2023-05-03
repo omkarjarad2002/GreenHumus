@@ -1,0 +1,46 @@
+.navbar {
+  height: 100px;
+  width: 100%;
+  border: 1px solid #fff;
+  background: transparent;
+}
+.navbar h1 {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12rem;
+  margin-right: 10rem;
+  color: rgb(14, 221, 14);
+}
+
+.navbar h1 a {
+  color: black;
+}
+
+.headingsNavbar {
+  margin-left: 10rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.headingsNavbar ul {
+  height: 40px;
+  width: 100px;
+  margin: 1.5rem;
+  padding: 4px;
+}
+
+.headingsNavbar ul li a {
+  font-weight: 200;
+  font-size: large;
+}
+
+.headingsNavbar ul:hover {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+.headingsNavbar ul:hover a {
+  cursor: pointer;
+  color: rgb(14, 221, 14);
+}
