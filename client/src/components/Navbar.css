@@ -3,6 +3,9 @@
   width: 100%;
   border: 1px solid #fff;
   background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px 0px #bdbaba;
 }
 .navbar h1 {
   text-align: center;
@@ -43,4 +46,111 @@
 .headingsNavbar ul:hover a {
   cursor: pointer;
   color: rgb(14, 221, 14);
+}
+.headingsNavbar button {
+  background-color: red;
+  border: 1px solid red;
+  height: 40px;
+  width: 100px;
+  border-radius: 0px;
+}
+.headingsNavbar button:hover {
+  background-color: rgb(190, 6, 6);
+  border: 1px solid rgb(190, 6, 6);
+  height: 40px;
+  width: 100px;
+}
+
+/*******************************************************After signin Navbar******************************************************/
+
+.navbar2 {
+  height: 82px;
+  width: 100%;
+  border: 1px solid black;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px 0px #bdbaba;
+}
+.navbar2 h1 {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 4rem;
+  color: rgb(14, 221, 14);
+}
+.navbar2 h1 a {
+  color: black;
+}
+
+.headingsNavbar2 {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-top: -1rem;
+  height: 70px;
+  width: auto;
+}
+
+.headingsNavbar2 ul {
+  height: 30px;
+  width: 140px;
+  margin: 4px;
+  padding: 2px;
+}
+
+.headingsNavbar2 ul li a {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.headingsNavbar2 ul a:hover {
+  cursor: pointer;
+  color: rgb(14, 221, 14);
+}
+/* .headingsNavbar2 button {
+  background-color: red;
+  border: 1px solid red;
+  height: 40px;
+  width: 100px;
+  border-radius: 0px;
+} */
+/* .headingsNavbar2 button:hover {
+  background-color: rgb(190, 6, 6);
+  border: 1px solid rgb(190, 6, 6);
+  height: 40px;
+  width: 100px;
+} */
+.headingsNavbar2 .searchBox {
+  display: inline-flex;
+  height: 40x;
+  width: 500px;
+  border: 1px solid rgb(161, 161, 161);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-radius: 4px;
+}
+.headingsNavbar2 .searchIcon {
+  margin-top: 10px;
+  padding: 2px;
+  height: 30px;
+  width: 30px;
+  border: 1px solid none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.headingsNavbar2 input {
+  margin-left: 5px;
+  padding: 2px;
+  height: 30px;
+  width: 450px;
+  border: none;
+  outline: none;
 }

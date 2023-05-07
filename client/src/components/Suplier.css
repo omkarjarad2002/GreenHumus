@@ -1,0 +1,54 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0px;
+  overflow-y: hidden;
+}
+
+.suplierform {
+  margin: 1rem auto 1rem auto;
+  align-items: center;
+  height: 670px;
+  width: 800px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px 0px #bdbaba;
+}
+.suplierform input {
+  height: 40px;
+  width: 700px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 4px;
+}
+.joinbtndiv {
+  height: 40px;
+  width: 750px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.joinbtndiv button {
+  height: 40px;
+  width: 400px;
+  margin: 1rem auto 1rem auto;
+  border: 1px solid rgb(14, 221, 14);
+  border-radius: 8px;
+  background-color: rgb(14, 221, 14);
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+button:hover {
+  background-color: rgb(33, 250, 33);
+  color: #ffffff;
+  border-radius: 1px solid rgb(33, 250, 33);
+  transition: 250ms;
+}
+.country_state_div {
+  display: flex;
+  width: 700px;
+}
+.country_state_div input {
+  width: 310px;
+}

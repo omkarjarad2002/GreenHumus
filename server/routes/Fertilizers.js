@@ -5,9 +5,10 @@ const Company = require("../schemas/FertilizerCompanySchema");
 require("../db/conn");
 
 router.post("/addFertilizer", async (req, res) => {
-  const { name, price, size, quantity, availability, companyID, file } =
+  const { name, price, size, quantity, crops, availability, companyID, file } =
     req.body;
-  if (!name || !price || !quantity || !availability) {
+  console.log(req.body);
+  if (!name || !price || !quantity || !crops || !availability) {
     return res.status(404).json({ message: "Unexpcted error occured !" });
   }
   if (quantity < 1) {
@@ -18,7 +19,7 @@ router.post("/addFertilizer", async (req, res) => {
     const companyExist = await Company.findOne({ _id: companyID });
 
     const FertilizerExist = await Fertilizer.findOne({
-      companyID: companyID,
+      name: name,
     });
 
     if (FertilizerExist) {
@@ -31,6 +32,7 @@ router.post("/addFertilizer", async (req, res) => {
         price: price,
         size: size,
         quantity: quantity,
+        crops: crops,
         availability: availability,
         companyID: companyID,
         file: file,
@@ -46,6 +48,29 @@ router.post("/addFertilizer", async (req, res) => {
   }
 });
 
+router.get("/getUserProducts/:id", async (req, res) => {
+  try {
+    const fertilizerExist = await Fertilizer.find({ _id: req.params.id });
+
+    if (fertilizerExist) {
+      return res.status(201).json({ fertilizerExist });
+    } else {
+      return res.status(404).json({ message: "Invalid Credentials" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.delete("/removeProduct/:id", async (req, res) => {
+  console.log(req.params.id);
+  try {
+    return Fertilizer.findOneAndDelete({
+      _id: req.params.id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 router.get("/getFertilizer/:id", async (req, res) => {
   try {
     const fertilizerExist = await Fertilizer.findOne({ _id: req.params.id });
@@ -58,6 +83,11 @@ router.get("/getFertilizer/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+router.get("/getAllFertilizers", async (req, res) => {
+  const fertilizers = await Fertilizer.find();
+  return res.status(200).json({ fertilizers });
 });
 
 router.post("/updateFertilizer/:id", async (req, res) => {

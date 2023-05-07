@@ -1,0 +1,23 @@
+.companyDashboard {
+  display: flex;
+}
+.logoutbtn {
+  height: 45px;
+  max-width: 300px;
+  min-width: 300px;
+  border: 1px solid black;
+  margin-top: 20px;
+  border-radius: 0px;
+  background-color: black;
+  color: #ffffff;
+  cursor: pointer;
+}
+.logoutbtn:hover {
+  height: 45px;
+  width: 100%;
+  border: 1px solid rgb(29, 29, 29);
+  margin-top: 20px;
+  border-radius: 0px;
+  background-color: rgb(29, 29, 29);
+  color: #ffffff;
+}

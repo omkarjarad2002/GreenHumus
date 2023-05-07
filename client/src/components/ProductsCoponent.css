@@ -1,0 +1,71 @@
+.productbox {
+  height: 330px;
+  width: 280px;
+  box-shadow: 0px 2px 4px 0px #bdbaba;
+  cursor: pointer;
+}
+.productbox:hover {
+  height: 330px;
+  width: 280px;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 3px 6px 0px #989898;
+  flex-wrap: wrap;
+}
+.imgBox {
+  max-height: 190px;
+  min-height: 190px;
+  width: 100%;
+  border: 1px solid #ffffff;
+}
+.imgBox img {
+  max-height: 190px;
+  min-height: 190px;
+  width: 100%;
+  border: 1px solid #ffffff;
+}
+.infoBox {
+  height: 140px;
+  width: 100%;
+  border: 1px solid #ffffff;
+}
+.nameBox {
+  height: 60px;
+  width: 100%;
+  border: 1px solid #ffffff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.priceBox {
+  padding: 6px;
+  display: inline-flex;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #ffffff;
+}
+.price_div {
+  margin-left: 10rem;
+  color: rgb(255, 123, 0);
+}
+.addToCartBtn {
+  height: 35px;
+  width: 100%;
+  border: 1px solid rgb(14, 221, 14);
+}
+.addToCartBtn button {
+  height: 35px;
+  width: 100%;
+  color: #ffffff;
+  border-radius: 0px;
+}
+.addToCartBtn button:hover {
+  height: 35px;
+  width: 100%;
+  color: #ffffff;
+  border-radius: 0px;
+  background-color: rgb(4, 139, 4);
+  border: 1px solid rgb(4, 139, 4);
+}
+.priceNameTag {
+  color: grey;
+}

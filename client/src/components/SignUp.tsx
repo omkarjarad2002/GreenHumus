@@ -1,8 +1,65 @@
 import "../components/SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Axios from "axios";
+import { addUser } from "../features/UserSlice";
 
 function SignUp() {
+  const userDispatch = useDispatch();
+  const [Details, setDetails] = useState({
+    fname: "",
+    lname: "",
+    phone: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e: any) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setDetails((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const postData = (e: any) => {
+    e.preventDefault();
+
+    if (
+      !Details.fname ||
+      !Details.lname ||
+      !Details.phone ||
+      !Details.email ||
+      !Details.password ||
+      !Details.cpassword
+    ) {
+      alert("All fields are required");
+      return;
+    }
+
+    Axios.post("http://localhost:3000/register", {
+      fname: Details.fname,
+      lname: Details.lname,
+      phone: Details.phone,
+      email: Details.email,
+      password: Details.password,
+      cpassword: Details.cpassword,
+    })
+      .then((res) => {
+        console.log(res);
+        userDispatch(addUser(res.data.userExist));
+        navigate("/");
+        alert("successfully registered");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div className="container">
@@ -18,7 +75,12 @@ function SignUp() {
               <label>First Name</label>
             </div>
             <div>
-              <input className="fnameInput"></input>
+              <input
+                className="fnameInput"
+                name="fname"
+                type="text"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="my-4 mx-10">
@@ -26,7 +88,12 @@ function SignUp() {
               <label>Last Name</label>
             </div>
             <div>
-              <input className="lnameInput"></input>
+              <input
+                className="lnameInput"
+                name="lname"
+                type="text"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="my-4 mx-10">
@@ -34,7 +101,12 @@ function SignUp() {
               <label>Phone</label>
             </div>
             <div>
-              <input className="phone"></input>
+              <input
+                className="phone"
+                name="phone"
+                type="text"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="my-4 mx-10">
@@ -42,7 +114,13 @@ function SignUp() {
               <label>Email</label>
             </div>
             <div>
-              <input className="email"></input>
+              <input
+                className="email"
+                name="email"
+                type="email"
+                autoComplete="off"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="my-4 mx-10">
@@ -50,7 +128,13 @@ function SignUp() {
               <label>Password</label>
             </div>
             <div>
-              <input className="password"></input>
+              <input
+                autoComplete="off"
+                className="password"
+                name="password"
+                type="password"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="my-4 mx-10">
@@ -58,11 +142,24 @@ function SignUp() {
               <label>Confirm Password</label>
             </div>
             <div>
-              <input className="cpassword"></input>
+              <input
+                className="cpassword"
+                name="cpassword"
+                type="password"
+                onChange={handleChange}
+              ></input>
             </div>
           </div>
           <div className="signupDiv my-4 mx-10">
-            <button>SignUp</button>
+            <button
+              id="signup"
+              type="submit"
+              value="Submit"
+              role="button"
+              onClick={postData}
+            >
+              SignUp
+            </button>
             <p>
               <a>
                 <Link to="/login"> Already have a account? Login</Link>

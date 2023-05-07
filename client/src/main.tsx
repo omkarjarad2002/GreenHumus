@@ -6,11 +6,22 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignUp from "./components/SignUp.tsx";
 import SignIn from "./components/SignIn.tsx";
+import Shop from "./components/Shop.tsx";
+import Navbar from "./components/Navbar.tsx";
+import Suplier from "./components/Supplier.tsx";
+import CompanyDashboard from "./components/companyDashboard.tsx";
+import { store } from "./store.tsx";
+import Cart from "./components/Cart.tsx";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <Navbar /> <App />
+      </>
+    ),
   },
   {
     path: "/register",
@@ -20,10 +31,45 @@ const router = createBrowserRouter([
     path: "/login",
     element: <SignIn />,
   },
+  {
+    path: "/shop",
+    element: (
+      <>
+        <Navbar /> <Shop />
+      </>
+    ),
+  },
+  {
+    path: "/supplier",
+    element: (
+      <>
+        <Suplier />
+      </>
+    ),
+  },
+  {
+    path: "/cart/:id",
+    element: (
+      <>
+        <Cart />
+      </>
+    ),
+  },
+  {
+    path: "/company_dashboard/:id",
+    element: (
+      <>
+        <CompanyDashboard />
+      </>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+    {/* <RouterProvider router={router} /> */}
   </React.StrictMode>
 );

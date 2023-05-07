@@ -190,6 +190,9 @@ function Home() {
                     <textarea
                       className="queryInput"
                       placeholder="Leave a message here..."
+                      // type="text"
+                      // name="message"
+                      // onChange={handlechange}
                     ></textarea>
                   </div>
                 </form>

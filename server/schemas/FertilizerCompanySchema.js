@@ -29,6 +29,9 @@ const companySchema = new mongoose.Schema({
   file: {
     type: String,
   },
+  userID: {
+    type: mongoose.Schema.Types.ObjectId,
+  },
   date: {
     type: Date,
     default: Date.now,

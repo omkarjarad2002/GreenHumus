@@ -5,14 +5,17 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("./.env");
+const path = require("path");
 
 app.use(
   cors({
-    origin: "http://localhost:4000",
+    origin: "http://localhost:5173",
     methods: "GET,POST,UPDATE,PUT,DELETE",
     credentials: true,
   })
 );
+
+app.use(express.static(path.join(__dirname, "uploads")));
 
 app.use(express.json());
 connection();

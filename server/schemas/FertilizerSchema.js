@@ -17,6 +17,10 @@ const fertilizerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  crops: {
+    type: String,
+    required: true,
+  },
   availability: {
     type: String,
     required: true,

@@ -7,15 +7,7 @@ require("../db/conn");
 
 router.post("/register", async (req, res) => {
   const { fname, lname, phone, gender, email, password, cpassword } = req.body;
-  if (
-    !fname ||
-    !lname ||
-    !phone ||
-    !gender ||
-    !email ||
-    !password ||
-    !cpassword
-  ) {
+  if (!fname || !lname || !phone || !email || !password || !cpassword) {
     return res.status(404).json({ message: "Unexpcted error occured !" });
   }
 
@@ -29,7 +21,6 @@ router.post("/register", async (req, res) => {
       fname: fname,
       lname: lname,
       phone: phone,
-      gender: gender,
       email: email,
       password: password,
       cpassword: cpassword,
@@ -42,7 +33,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(404).json({ message: "Unexpcted error occured !" });
