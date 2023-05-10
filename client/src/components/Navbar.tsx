@@ -2,23 +2,9 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
 import { HiOutlineSearch } from "react-icons/hi";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 function Navbar() {
-  const [ID, setID] = useState();
   const { User } = useSelector((state: any) => state.user);
-  console.log(User);
-  const getCompany = () => {
-    axios
-      .get(`http://localhost:3000/getUserCompany/${User._id}`)
-      .then((res) => setID(res.data.company._id))
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    getCompany();
-  });
 
   return (
     <>
@@ -85,18 +71,19 @@ function Navbar() {
                 </a>
               </li>
             </ul>
-            <div className="searchBox">
-              <div className="searchIcon">
-                <HiOutlineSearch />
-              </div>
-              <div className="searchInput">
-                <input type="text" placeholder="Search for Fertilizers"></input>
-              </div>
-            </div>
+
             <ul>
               <li>
                 <a className="font-sans">
-                  <Link to={`/company_dashboard/${ID}`}> Profile</Link>
+                  <Link
+                    to={
+                      !User.isadmin
+                        ? `/user_dashboard/${User._id}`
+                        : `/company_dashboard/${User._id}`
+                    }
+                  >
+                    Profile
+                  </Link>
                 </a>
               </li>
             </ul>

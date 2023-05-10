@@ -1,0 +1,45 @@
+.user_dashboard_outer {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(88, 209, 44);
+}
+
+.heading_img_div {
+  height: 300px;
+  width: 100%;
+  background-color: rgb(38, 131, 7);
+  position: relative;
+  display: flex;
+}
+.profile_div {
+  height: 100%;
+  width: 30%;
+}
+.heading_div {
+  height: 100%;
+  width: 70%;
+}
+.profile_img {
+  height: 250px;
+  width: 250px;
+  border: 2px solid black;
+  margin: 8rem auto auto 4rem;
+  border-radius: 50%;
+  position: absolute;
+}
+.user_info {
+  margin: 6rem auto auto 6rem;
+}
+.logoutbtn_user {
+  height: 45px;
+  width: 200px;
+  background-color: #1370b8;
+  color: #ffffff;
+  margin-top: 2rem;
+}
+.logoutbtn_user:hover {
+  height: 45px;
+  width: 200px;
+  background-color: #5885a7;
+  color: #ffffff;
+}

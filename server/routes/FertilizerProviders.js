@@ -19,6 +19,22 @@ router.post("/addCompany", async (req, res) => {
       return res.status(404).json({ message: "User not found!" });
     }
 
+    const updatedUser = await User.findByIdAndUpdate(
+      { _id: userExist._id },
+      {
+        $set: {
+          fname: userExist.fname,
+          lname: userExist.lname,
+          phone: userExist.phone,
+          email: userExist.email,
+          isadmin: true,
+        },
+      }
+    );
+    console.log("updatedUser", updatedUser);
+
+    await updatedUser.save();
+
     if (companyExist) {
       return res.status(404).json({ message: "Company already exist!" });
     } else {
@@ -31,6 +47,7 @@ router.post("/addCompany", async (req, res) => {
         location: location,
         file: file,
         userID: userExist._id,
+        isadmin: true,
       });
       await newCompany.save();
       console.log(newCompany);
@@ -42,8 +59,21 @@ router.post("/addCompany", async (req, res) => {
 });
 
 router.get("/getUserCompany/:id", async (req, res) => {
-  const company = await Company.findOne({ userID: req.params.id });
-  return res.status(201).json({ company: company });
+  try {
+    const company = await Company.findOne({ userID: req.params.id });
+    return res.status(201).json({ company: company });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/getCompanyDetails/:id", async (req, res) => {
+  try {
+    const company = await Company.findOne({ _id: req.params.id });
+    return res.status(201).json({ company: company });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;

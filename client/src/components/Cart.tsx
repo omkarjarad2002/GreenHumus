@@ -3,11 +3,28 @@ import { AiFillMinusSquare } from "react-icons/ai";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { BiArrowBack } from "react-icons/bi";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
 function Cart() {
+  const navigate = useNavigate();
+  let i = 1;
+
+  const minusClick = (i: number) => {
+    console.log(i);
+    if (i > 0) {
+      return i--;
+    }
+  };
+
+  const plusClick = (i: number) => {
+    console.log(i);
+    if (i >= 1) {
+      return i++;
+    }
+  };
+
   const { id } = useParams();
   const [products, setProducts] = useState([]);
 
@@ -22,9 +39,7 @@ function Cart() {
   }, []);
 
   const removeBtn = () => {
-    Axios.delete(`http://localhost:4000/removeProduct/${id}`)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    navigate("/shop");
   };
 
   return (
@@ -70,11 +85,11 @@ function Cart() {
                     </div>
                   </div>
                   <div className="productionQuantityDiv">
-                    <div className="minusIcon">
+                    <div className="minusIcon" onClick={minusClick(i)}>
                       <AiFillMinusSquare />
                     </div>
-                    <div className="productionCount">{product.quantity}</div>
-                    <div className="plusIcon">
+                    <div className="productionCount">{i}</div>
+                    <div className="plusIcon" onClick={plusClick(i)}>
                       <AiFillPlusSquare />
                     </div>
                   </div>
@@ -118,7 +133,7 @@ function Cart() {
                       <h1 className="font-sans ">PRODUCT NAME</h1>
                     </div>
                     <div className="PriceNameDiv">
-                      <h1 className="font-sans  ">${product.price}</h1>
+                      <h1 className="font-sans  ">PRICE</h1>
                     </div>
                   </div>
                   <div className="summaryHeadingDiv">
@@ -126,9 +141,7 @@ function Cart() {
                       <h1 className="font-sans ">{product.name}</h1>
                     </div>
                     <div className="PriceNameDiv">
-                      <h1 className="font-sans  ">
-                        ${product.price * product.quantity}
-                      </h1>
+                      <h1 className="font-sans  ">${product.price * i}</h1>
                     </div>
                   </div>
                 </div>

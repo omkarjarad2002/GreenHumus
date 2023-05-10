@@ -1,0 +1,31 @@
+.product_info_container {
+  height: 600px;
+  width: 1000px;
+  /* border: 1px solid black; */
+  margin: 1rem auto 1rem auto;
+}
+.product_img_div {
+  height: 250px;
+  width: 300px;
+  margin: 1rem auto 1rem auto;
+}
+.product_img_div img {
+  height: 250px;
+  width: 300px;
+  margin: auto;
+}
+.product_info_div {
+  display: flex;
+  margin: 4rem auto 1rem 2rem;
+}
+.product_info_div h1 {
+  margin: 10px auto 10px auto;
+}
+.product_details {
+  margin: auto;
+  float: right;
+}
+.company_details {
+  margin: auto;
+  float: right;
+}

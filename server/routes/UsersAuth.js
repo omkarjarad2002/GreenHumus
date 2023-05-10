@@ -62,4 +62,16 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/getUserData/:id", async (req, res) => {
+  const { id } = req.params.id;
+
+  try {
+    const userExist = await User.findOne({ _id: id });
+
+    return res.status(201).json({ user: userExist });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

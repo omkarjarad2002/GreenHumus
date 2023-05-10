@@ -1,14 +1,20 @@
 import "../components/Suplier.css";
 import { Link, useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
-import { useState } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/UserSlice";
 import "../components/companyDashboard.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function CompanyDashboard() {
+  const { User } = useSelector((state: any) => state.user);
+
+  const [companyDetails, setCompanyDetails] = useState([]);
+
   const navigate = useNavigate();
   const userDispatch = useDispatch();
   const { id } = useParams();
@@ -20,7 +26,6 @@ function CompanyDashboard() {
     quantity: "",
     crops: "",
     availability: "",
-    companyID: id,
     file: "",
   });
 
@@ -51,6 +56,21 @@ function CompanyDashboard() {
     return res;
   };
 
+  const getCompany = async () => {
+    await axios
+      .get(`http://localhost:3000/getUserCompany/${id}`)
+      .then((res) => {
+        setCompanyDetails(res.data.company);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (User) {
+      getCompany();
+    }
+  });
+
   const addProduct = async (e: any) => {
     e.preventDefault();
     const file = await uploadFile();
@@ -62,11 +82,10 @@ function CompanyDashboard() {
       quantity: Details.quantity,
       crops: Details.crops,
       availability: Details.availability,
-      companyID: Details.companyID,
+      companyID: companyDetails._id,
       file: file.data.file.filename,
     })
       .then((res) => {
-        console.log(res);
         alert("Product added successfully!");
       })
       .catch((error) => {
@@ -82,6 +101,9 @@ function CompanyDashboard() {
 
   return (
     <>
+      <div className="company_img_div">
+        <img src={`http://localhost:3000/${companyDetails.file}`} />
+      </div>
       <div className="companyDashboard">
         <div className="container">
           <form className=" suplierform drop-shadow-4xl">
@@ -194,13 +216,21 @@ function CompanyDashboard() {
                 ></input>
               </div>
             </div>
-
             <div className="joinbtndiv my-4 mx-10">
               <button onClick={addProduct}>ADD PRODUCT</button>
             </div>
           </form>
         </div>
         <div className=" my-4 mx-10">
+          <div className="company_details">
+            <h1> Company Name : {companyDetails.cname}</h1>
+            <h1> Phone : {companyDetails.phone}</h1>
+            <h1> Email : {companyDetails.email}</h1>
+            <h1> Location : {companyDetails.location}</h1>
+            <h1> State : {companyDetails.state}</h1>
+            <h1> Country :{companyDetails.country}</h1>
+            <h1> Date of Establishment :{companyDetails.date}</h1>
+          </div>
           <button className="logoutbtn" onClick={handleClick}>
             Logout
           </button>

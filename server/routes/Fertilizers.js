@@ -17,6 +17,7 @@ router.post("/addFertilizer", async (req, res) => {
 
   try {
     const companyExist = await Company.findOne({ _id: companyID });
+    console.log("companyExist", companyExist);
 
     const FertilizerExist = await Fertilizer.findOne({
       name: name,
@@ -25,9 +26,10 @@ router.post("/addFertilizer", async (req, res) => {
     if (FertilizerExist) {
       return res.status(402).json({ message: "Fertilizer already exist!" });
     }
+    console.log("FertilizerExist", FertilizerExist);
 
     if (companyExist && !FertilizerExist) {
-      const product = new Fertilizer({
+      const product = await new Fertilizer({
         name: name,
         price: price,
         size: size,
@@ -37,6 +39,8 @@ router.post("/addFertilizer", async (req, res) => {
         companyID: companyID,
         file: file,
       });
+
+      console.log("Product : ", product);
 
       await product.save();
       return res
